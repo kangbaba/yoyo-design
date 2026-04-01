@@ -1,6 +1,6 @@
 ---
 name: yoyo-design
-description: YoYo product design assistant. Build mobile app screens directly in Figma canvas using Plugin API, import YoYo library components, query design tokens, recommend components. Use when building YoYo app screens, checking design compliance, or asking about YoYo colors/fonts/spacing/buttons.
+description: YoYo product design assistant. Build mobile app screens in Figma canvas, generate H5 campaign pages (HTML), import YoYo library components, query design tokens, recommend components. Use when building YoYo app screens, H5 pages, checking design compliance, or asking about YoYo design specs.
 risk: safe
 ---
 
@@ -33,7 +33,7 @@ Use the `/figma-use` skill + `use_figma` MCP tool to create Frames, text, shapes
 - Background: `#F5F5F5` (main pages), `#FFFFFF` (tertiary/content pages)
 - Layout: use auto-layout (`layoutMode: 'VERTICAL'`) on the screen frame
 - Clip content: `true`
-- Position new frames to the right of existing content (scan `figma.currentPage.children` for `maxX`)
+- Position new frames to the right of existing content (scan `figma.currentPage.children` for `maxX`). **Row wrapping**: after 10 frames in a row, start a new row below (offset Y by tallest frame height + 200px gap, reset X to 0)
 
 ### Component Library — ALWAYS USE FIRST
 - **Core principle: Library first.** Before building ANY UI element, check if a matching component exists in the YoYo library and import it.
@@ -162,3 +162,56 @@ Build screens step by step with validation:
   - **Pre-delivery self-check**: verify all non-icon Frame children don't have meaningless FIXED `layoutSizingVertical`
 - MUST `await figma.loadFontAsync()` before ANY text property changes
 - ALWAYS `return` all created/mutated node IDs
+
+### Component States Section ("补充状态")
+When a designer asks to "complete all states" or "补充状态" for a page or component, create a **Section** node to contain all supplementary state frames.
+
+**Section setup:**
+- Node type: **Section** (`figma.createSection()`)
+- Name: **"补充状态"**
+- Background: **#333333**
+- Position: to the right of the main screen frame (100px gap)
+- Padding: **80px** around frames inside
+- Gap between frames: **80px**
+- Each state frame inside remains **720px wide, white background**, same as the main screen
+
+**Pick states based on the component type:**
+
+| Component type | States |
+|---|---|
+| Buttons | Default, Pressed, Disabled, Loading |
+| Input fields | Empty, Focused, Filled, Error, Disabled |
+| List items | Default, Selected, Pressed, Swiped |
+| Toggle / Switch | On, Off, Disabled |
+| Cards | Default, Highlighted, Pressed |
+| Tabs | Selected, Unselected, with Badge |
+| Chat bubbles | Sent, Sending, Failed |
+| Seats (chat room) | Empty, Occupied, Speaking, Muted |
+| Modals / Sheets | Open state (main screen shows closed) |
+
+- Only include states that are **relevant** to the specific page — don't blindly list all
+- Each state frame should be clearly named (e.g. "Search - Results", "Search - Empty")
+- Use the same component library instances, just adjust properties for each state
+- For empty states, import the `空状态` component set from the YoYo library (file `GxW7MR9p08qbqCPt5Tzrjw`, Img page) — pick the matching variant
+
+---
+
+## H5 Campaign Pages (Mobile Web)
+
+For H5 campaign/event/promotional pages. Primary output is a **deployable HTML file**, optionally sent to Figma canvas on request.
+
+### H5 Workflow
+1. **AI generates a self-contained HTML file** (750px base, responsive)
+2. **Designer previews in browser**, iterates with AI
+3. **Deploy directly** via Vercel (no front-end dev needed) — use `/deploy-to-vercel`
+4. **Optionally send to Figma** if designer requests a canvas copy
+
+### H5 Generation Rules
+- Base width: **750px**, responsive via `rem`/`vw` units
+- Viewport: `<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">`
+- Safe area: use `env(safe-area-inset-*)` for notch/home indicator
+- Font: Roboto (Google Fonts CDN)
+- All assets (images, fonts, icons) loaded from CDN — no local paths
+- Self-contained single HTML file when possible
+- Follow YoYo design system specs from CLAUDE.md (colors, typography, buttons, spacing)
+- **All UI text in English** (same rule as mobile app)

@@ -4,13 +4,24 @@
 
 YoYo is a social voice chat app for iOS and Android, targeting markets across the Middle East, Southeast Asia, South Asia, and beyond. Core features include voice chat rooms, private messaging, moments (social feed), family groups, in-app games (Ludo, Dominoes, Among Us, etc.), virtual gifts, and activities/events.
 
-- **Platforms**: iOS, Android (native)
+- **Platforms**: iOS, Android (native) + H5 (mobile web campaigns)
 - **Languages**: 16+ (English, Arabic, Indonesian, Malay, Urdu, Traditional/Simplified Chinese, Thai, Filipino, Bengali, Turkish, French, Japanese, Spanish, Vietnamese, Korean, and more)
-- **Design base width**: 720px (matching Figma design files)
 
 ## Repo Purpose
 
-Design system specifications and AI-assisted prototyping for the YoYo design team. This repo is the source of truth for design specs and is used to generate Figma-ready screens via Claude Code.
+Design system specifications and AI-assisted prototyping for the YoYo design team. This repo is the source of truth for design specs and is used to generate Figma-ready screens and H5 campaign pages via Claude Code.
+
+## Platform Variants
+
+| | Mobile App (Figma) | H5 Campaign (Mobile Web) |
+|---|---|---|
+| Base width | 720px | 750px |
+| Units | px (fixed, Figma-native) | rem/vw (responsive) |
+| Primary output | Figma canvas | HTML file (deployable) |
+| Secondary output | — | Figma canvas (on request) |
+| Viewport | — | `<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">` |
+| Safe area | — | Account for notch / home indicator via `env(safe-area-inset-*)` |
+| Use case | App screens, features, flows | Campaign pages, event pages, promotional H5 |
 
 ## Rules
 
