@@ -64,6 +64,37 @@ YoYo is a social voice chat app for iOS and Android, with supporting H5 campaign
 - Both agents follow the same design spec (`CLAUDE.md`) and shared workflow (`AGENTS.md`).
 - If an agent disagrees with a prior decision, note it in `WORKLOG.md` and ask the user — don't silently override.
 
+## Issue-to-Design Workflow
+
+When the design leader sends an issue (design request, feature spec, campaign brief), agents follow this process:
+
+### Step 1 — Analyze
+
+Read the issue and produce a **plan**: what screens, components, or pages are needed, which specs apply, dependencies, and suggested order of work.
+
+### Step 2 — Break down
+
+Split the plan into **individual tasks** — each task is one reviewable deliverable (e.g., one screen, one component, one section of an H5 page).
+
+### Step 3 — Review
+
+Present the plan and task list to the design leader for approval. Wait for sign-off or adjustments before executing.
+
+### Step 4 — Execute
+
+Work through tasks one by one. Mark each task complete as it's finished so progress is visible.
+
+### Step 5 — Deliver
+
+When all tasks are done, summarize what was built and flag anything that needs the design leader's final review.
+
+### Guidelines
+
+- Skip this process for quick asks (one-off spec questions, small tweaks). Just do it.
+- Use this process for anything with 3+ deliverables or cross-screen scope.
+- Plans are living documents — if something changes mid-task, update the plan rather than starting over.
+- If handing off to the other agent mid-issue, the task list and plan carry over via `WORKLOG.md`.
+
 ## Agent Compatibility
 
 This repo may be worked on by multiple agents, including Claude and Codex.
