@@ -4,6 +4,7 @@ Design system specs and AI-assisted prototyping for the YoYo product — a socia
 
 ## What's inside
 
+- **`AGENTS.md`** — shared instructions for any AI agent working in this repo, including handoff and collaboration rules.
 - **`CLAUDE.md`** — YoYo design system specs (colors, typography, buttons, spacing, component patterns). Auto-loaded by Claude Code when working in this project.
 - **`.claude/commands/yoyo-design.md`** — Figma build skill. Invoked via `/yoyo-design` in Claude Code. Builds production-ready screens directly in Figma canvas and generates H5 campaign pages.
 
@@ -16,6 +17,8 @@ Design system specs and AI-assisted prototyping for the YoYo product — a socia
    Or ask Claude Code: **"clone https://github.com/kangbaba/yoyo-design.git and open it"**
 
 2. Open the folder in Claude Code — `CLAUDE.md` loads automatically, `/yoyo-design` skill is available.
+
+   For cross-agent work, read `AGENTS.md` first, then `CLAUDE.md`.
 
 3. Start designing:
    - **"Build a chat room page in Figma"** — builds directly in Figma canvas
