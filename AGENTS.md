@@ -9,6 +9,7 @@ Use this file as the neutral, cross-agent operating guide.
 ## Source of Truth
 
 - Product and design specs live in [`CLAUDE.md`](./CLAUDE.md).
+- Codex-specific workflow notes live in [`CODEX.md`](./CODEX.md).
 - Claude-specific commands and runtime notes live under [`.claude/`](./.claude/).
 - If `AGENTS.md` and `CLAUDE.md` conflict, follow `CLAUDE.md` for design specs and exact values, and follow `AGENTS.md` for collaboration workflow and handoff.
 
@@ -49,6 +50,7 @@ YoYo is a social voice chat app for iOS and Android, with supporting H5 campaign
 This repo may be worked on by multiple agents, including Claude and Codex.
 
 - `CLAUDE.md` should remain available for Claude.
+- `CODEX.md` should describe how Codex translates Claude-specific workflows into Codex-friendly execution.
 - `AGENTS.md` should contain shared instructions that any agent can read.
 - Tool-specific instructions should stay in tool-specific files rather than in shared operating docs.
 - If an agent cannot access a tool mentioned in repo docs, it should still follow the product and design intent and clearly state the tool limitation.
@@ -81,6 +83,7 @@ Recommended locations:
 
 ## Repo Notes
 
+- Codex workflow notes currently exist at [`CODEX.md`](./CODEX.md).
 - Claude command definition currently exists at [`.claude/commands/yoyo-design.md`](./.claude/commands/yoyo-design.md).
 - Local Claude permissions currently exist at [`.claude/settings.local.json`](./.claude/settings.local.json).
 - Untracked HTML files may represent work in progress and should not be deleted without confirmation.
@@ -88,6 +91,7 @@ Recommended locations:
 ## Recommended Structure
 
 - `AGENTS.md`: shared agent workflow and handoff rules
+- `CODEX.md`: Codex translation layer for Claude-oriented workflows
 - `CLAUDE.md`: detailed YoYo design spec and Claude compatibility
 - `.claude/`: Claude-only commands and settings
 - `WORKLOG.md`: optional active-task handoff log
