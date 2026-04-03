@@ -45,6 +45,25 @@ YoYo is a social voice chat app for iOS and Android, with supporting H5 campaign
 - Account for safe areas and mobile viewport behavior.
 - Follow `CLAUDE.md` for brand and UI specs.
 
+## Agent Priority and Handoff
+
+**Primary agent: Claude (Claude Code).** Claude handles all tasks by default.
+
+**Backup agent: Codex.** Codex takes over when Claude's token budget is running low or exhausted for the session, or when the user explicitly routes a task to Codex.
+
+### How handoff works
+
+1. When Claude is approaching token limits or the user says to switch, Claude writes a handoff note to `WORKLOG.md` covering: current task, files touched, what's done, what remains, and any decisions made.
+2. Codex picks up from `WORKLOG.md` and continues the work.
+3. When Codex finishes or the user switches back, Codex updates `WORKLOG.md` the same way.
+4. Both agents must read `WORKLOG.md` at session start if it exists.
+
+### Rules
+
+- Neither agent should redo work the other already completed — check `WORKLOG.md` and git history first.
+- Both agents follow the same design spec (`CLAUDE.md`) and shared workflow (`AGENTS.md`).
+- If an agent disagrees with a prior decision, note it in `WORKLOG.md` and ask the user — don't silently override.
+
 ## Agent Compatibility
 
 This repo may be worked on by multiple agents, including Claude and Codex.
