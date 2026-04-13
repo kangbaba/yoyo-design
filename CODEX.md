@@ -43,9 +43,32 @@ Codex should treat [`CLAUDE.md`](./CLAUDE.md) as the authoritative design spec f
 ### `/figma-use` and `use_figma`
 
 Claude behavior:
-- relies on a Figma runtime / MCP integration to inspect files, import components, and create or edit frames directly in Figma
+- relies on the Figma MCP server to inspect files, import components, and create or edit frames directly in Figma canvas
 
-Codex equivalent:
+#### Figma MCP Setup (for Codex environments)
+
+Install the Figma MCP server:
+
+```bash
+claude plugin install figma@claude-plugins-official
+```
+
+Or add manually:
+
+```bash
+claude mcp add --transport http figma https://mcp.figma.com/mcp
+```
+
+After installation, authenticate via `/plugin` → Installed → Figma → "Allow access" in browser.
+
+Requirements: a full or development seat in Figma + edit or view-only permissions to the target file.
+
+Key commands:
+- `claude mcp list` — check connection status
+- `claude mcp remove figma` — remove if needed
+
+#### Codex equivalent
+
 - If a Figma MCP, plugin, or internal design tool is available in the current Codex environment, use it.
 - If no Figma tool is available, do not pretend direct Figma writes are possible.
 - In that case, Codex should still do one of the following:

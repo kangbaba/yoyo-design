@@ -214,3 +214,50 @@ Room cover + room name + intro text + tags (flag, count, family, type) + online 
 - Main page background: #F5F5F5, card/list white #FFFFFF
 - Tertiary pages (pure content): #FFFFFF
 - Section dividers: #E6E6E6
+
+## Figma MCP Server (`/figma-use`)
+
+All mobile app screens MUST be built directly in Figma canvas. NEVER generate HTML preview pages for app UI.
+
+### Installation
+
+```bash
+claude plugin install figma@claude-plugins-official
+```
+
+Then restart Claude Code.
+
+If the plugin method fails, add manually:
+
+```bash
+claude mcp add --transport http figma https://mcp.figma.com/mcp
+```
+
+### Authentication
+
+1. In Claude Code, type `/plugin` and press Enter
+2. Navigate to **Installed** tab, select Figma
+3. Click **"Allow access"** when the browser opens
+4. Return to Claude Code — Figma should now be connected
+
+### Requirements
+
+- A full or development seat in Figma
+- Edit or view-only permissions to the target file
+
+### Usage
+
+Claude Code automatically loads the `/figma-use` skill before calling `use_figma` — no need to type it manually. Just give the task with a Figma file URL.
+
+The `/figma-use` skill uses the `use_figma` MCP tool to execute JavaScript via the Figma Plugin API. It can:
+- Inspect files, pages, and nodes
+- Import library components by key
+- Create frames, text, shapes, and auto-layout containers
+- Apply design system variables, text styles, and effect styles
+- Build production-ready screens directly on Figma canvas
+
+### Key Commands
+
+- `claude mcp list` — check Figma connection status
+- `claude mcp remove figma` — remove Figma MCP if needed
+- Detailed API rules and component library keys are in `.claude/commands/yoyo-design.md`
