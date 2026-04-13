@@ -124,7 +124,8 @@ Use prompts like:
 - "Read AGENTS.md, CODEX.md, and CLAUDE.md, then build an H5 event page."
 - "Use the YoYo spec to review this design and list violations."
 - "If direct Figma editing is unavailable, give me a complete Figma build spec instead."
-- "Continue from the current repo state and leave a handoff note in WORKLOG.md."
+- "Continue from the current repo state — read HANDOFF.md first."
+- "Export a handoff.md for shifting task to claude."
 
 ## Maintenance Rule
 
