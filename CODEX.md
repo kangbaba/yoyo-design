@@ -99,6 +99,13 @@ When a teammate asks Codex to work on a Figma task, use this order:
 5. If yes, perform the Figma task.
 6. If not, produce a precise fallback deliverable instead of blocking.
 
+## Handoff Location
+
+Follow the shared handoff rules in [`AGENTS.md`](./AGENTS.md).
+
+- Put `HANDOFF.md` and `handoff_history/` in the active subproject folder.
+- Use the repo root only if the repo root itself is the active work area.
+
 ## Required Codex Behavior
 
 - All UI text must remain in English.
@@ -124,7 +131,7 @@ Use prompts like:
 - "Read AGENTS.md, CODEX.md, and CLAUDE.md, then build an H5 event page."
 - "Use the YoYo spec to review this design and list violations."
 - "If direct Figma editing is unavailable, give me a complete Figma build spec instead."
-- "Continue from the current repo state — read HANDOFF.md first."
+- "Continue from the current repo state — read the active subproject's HANDOFF.md first."
 - "Export a handoff.md for shifting task to claude."
 
 ## Maintenance Rule
