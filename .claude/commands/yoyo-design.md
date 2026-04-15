@@ -39,6 +39,7 @@ Use the `/figma-use` skill + `use_figma` MCP tool to create Frames, text, shapes
 - Font: **Roboto** (must load via `figma.loadFontAsync` before any text operations)
 - Background: `#F5F5F5` (main pages), `#FFFFFF` (tertiary/content pages)
 - Layout: use auto-layout (`layoutMode: 'VERTICAL'`) on the screen frame
+- **Auto-layout exceptions — overlay elements:** Bottom popups, bottom sheets, FABs (floating action buttons), and any overlay elements must NOT be auto-layout children of the screen frame. Instead, place them as **absolute-positioned siblings** inside the screen frame (`layoutPositioning: 'ABSOLUTE'`) so they float over the main content. Pin them to the bottom or desired edge using `constraints`.
 - Clip content: `true`
 - Position new frames to the right of existing content (scan `figma.currentPage.children` for `maxX`). **Row wrapping**: after 10 frames in a row, start a new row below (offset Y by tallest frame height + 200px gap, reset X to 0)
 
