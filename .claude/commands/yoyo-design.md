@@ -24,6 +24,10 @@ Use the active subproject folder for handoff files.
 3. **Build screens in Figma**: Build production-ready mobile screens directly in Figma canvas using the `use_figma` Plugin API (via the `/figma-use` skill)
 4. **Design review**: Check designs against specs and flag inconsistencies
 
+## Asset Exports → `/figma-export`
+
+For exporting icons / screenshots / assets from existing Figma designs, use the dedicated **`/figma-export`** skill — it handles tool routing (`get_screenshot` / `get_design_context`, never `use_figma`) and parallel multi-asset workflows. Designers rarely export themselves, but the skill auto-loads when triggered.
+
 ## Building Screens — Figma-Native Workflow
 
 **IMPORTANT: Always build directly in Figma canvas. NEVER generate HTML preview pages.**
